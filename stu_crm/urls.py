@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     #   url(r'^$',views.dashboard),
     path('', views.dashboard, name='dashboard'),
-    url(r'^customer/$',views.customer),
+    url(r'^station/$',views.station),
+    url(r'^bustation/$',views.bustation),
 ]

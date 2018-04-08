@@ -6,16 +6,23 @@ import datetime
 
 from django.utils import timezone
 
-class customer(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-    id1 = models.IntegerField()
-    qq = models.IntegerField()
-    name = models.CharField(max_length=200)
-    source = models.CharField(max_length=200)
-    cource = models.CharField(max_length=200)
-    get_class_type_display = models.CharField(max_length=200)
-    customer_note = models.CharField(max_length=200)
-    get_status_display=models.CharField(max_length=200)
-    consultant = models.CharField(max_length=200)
-    date = models.DateTimeField('date publicshed')
+class Station(models.Model):
+    protostatid = models.AutoField(primary_key=True)
+    projectname = models.CharField(max_length=250)
+    stationname = models.CharField(max_length=250)
+
+class BuStation(models.Model):
+    proid =	 models.AutoField(primary_key=True)
+    propertyunit = models.CharField(max_length=250)
+    projecttime = models.IntegerField()
+    projectname = models.CharField(max_length=250)
+    projectfunds = models.FloatField()
+    settlement = models.CharField(max_length=250)
+    settlementfunds = models.FloatField()
+    surplusfunds = models.FloatField()
+    transferfunds = models.FloatField()
+    depreciation = models.FloatField()
+    netassets = models.FloatField()
+    renovationproject = models.FloatField()
+    renovationtime = models.FloatField()
+    renovationfunds = models.FloatField()

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+站点投资落地清单
+{% endblock %}
+
+{% block table-content %}
+
+    <table class="table table-striped">
+        <thead>　　　　　　　　　　　　　　　　　
+            <tr>　　　　
+                <th>序号</th>　　　　　　　　　　
+                <th>投资项目</th>
+                <th>落地项目</th>
+            </tr>
+        </thead>
+                   {% for station in station_list %}
+        <tbody>　　　　　　　　　　　　　　　　　　　　　　　　
+
+                <tr>
+                    <td>{{ station.protostatid }}</td>　　　　　
+                    <td>{{ station.projectname }}</td>
+                    <td>{{ station.stationname }}</td>
+                </tr>
+
+        </tbody>
+                {% endfor %}
+    </table>
+        <div class="pagination">
+        <span class="step-links">
+            {% if station_list.has_previous %}                                     <!--如果有上一页-->
+                <a href="?page={{ station_list.previous_page_number }}">上一页</a>  <!--点击时超链接到上一页-->
+            {% endif %}
+
+            <span class="current">
+                 Page{{ station_list.number }} of {{ station_list.paginator.num_pages }}  <!--customers_list.number为当前页码,customers_list.paginator.num_pages为总页码数-->
+            </span>
+
+            {% if station_list.has_next %}    <!--如果有下一页-->
+                <a href="?page={{ station_list.next_page_number }}">下一页</a>    <!--点击时超链接到下一页-->
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}

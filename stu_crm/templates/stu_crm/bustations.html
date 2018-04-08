@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+站点投资清单
+{% endblock %}
+
+{% block table-content %}
+
+    <table class="table table-striped">
+        <thead>　　　　　　　　　　　　　　　　　
+            <tr>　　　
+                <th>序号</th>　　　　　　　　　　
+                <th>产权单位</th>
+                <th>项目年份</th>
+                <th>项目下达名称</th>
+                <th>项目下达资金</th>
+                <th>是否结算</th>
+                <th>项目结算资金</th>
+                <th>结余资金</th>
+                <th>转资</th>
+                <th>折旧</th>
+                <th>净资产</th>
+
+            </tr>
+        </thead>
+                   {% for station in bustation_list %}
+        <tbody>　　　　　　　　　　　　　　　　　　　　　　　　
+
+                <tr>
+<td>{{ station.proid}}</td>
+<td>{{ station.propertyunit}}</td>
+<td>{{ station.projecttime}}</td>
+<td>{{ station.projectname}}</td>
+<td>{{ station.projectfunds}}</td>
+<td>{{ station.settlement}}</td>
+<td>{{ station.settlementfunds}}</td>
+<td>{{ station.surplusfunds}}</td>
+<td>{{ station.transferfunds}}</td>
+<td>{{ station.depreciation}}</td>
+<td>{{ station.netassets}}</td>
+
+
+                </tr>
+
+        </tbody>
+                {% endfor %}
+    </table>
+        <div class="pagination">
+        <span class="step-links">
+            {% if bustation_liststation_list.has_previous %}                                     <!--如果有上一页-->
+                <a href="?page={{ bustation_list.previous_page_number }}">上一页</a>  <!--点击时超链接到上一页-->
+            {% endif %}
+
+            <span class="current">
+                 Page{{ bustation_list.number }} of {{ bustation_list.paginator.num_pages }}  <!--customers_list.number为当前页码,customers_list.paginator.num_pages为总页码数-->
+            </span>
+
+            {% if bustation_list.has_next %}    <!--如果有下一页-->
+                <a href="?page={{ bustation_list.next_page_number }}">下一页</a>    <!--点击时超链接到下一页-->
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}
